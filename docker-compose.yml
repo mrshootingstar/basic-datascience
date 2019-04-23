@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  datascience:
+    build: .
+    image: smirghor/simple-datascience
+    container_name: "simple_datascience"
+    volumes:
+      - ./:/root/app
+    ports:
+      - "8888:8888"
+    restart: always
+    working_dir: /root/app
+    command: >
+      bash -c "jupyter lab --allow-root  --no-browser --ip=0.0.0.0 --NotebookApp.custom_display_url=http://127.0.0.1:8888"
